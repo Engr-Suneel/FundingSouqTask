@@ -1,0 +1,40 @@
+.azakaw-paginations {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.custom-pagination-select {
+  display: flex;
+  align-items: center;
+  min-width: 230px;  
+}
+.custom-pagination-select label {
+  min-width: 115px;
+  font-size: 12px;
+  letter-spacing: .5px;
+  position: relative;
+  color: #6d7b98;
+}
+.azakaw-paginations > button {
+  border-radius: 0px !important;
+  margin-right: 1px !important;
+}
+.azakaw-paginations > button:first-child {
+  border-radius: 3px 0px 0px 3px !important;
+}
+.azakaw-paginations > button:last-child {
+  border-radius: 0px 3px 3px 0px !important;
+}
+.ml-5{
+  margin-left: 5px;
+}
+.mr-5{
+  margin-right: 5px;
+}
+.btn-primary {
+  border-color: #babed1 !important;
+  background: #babed1 !important;
+}
+.ml-3 {
+  margin-left: 20px;
+}

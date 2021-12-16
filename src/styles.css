@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --primary-color: #2980b9;
+}
+.app-loader {
+  position: fixed;
+  height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 11000;
+  top: 0px;
+}
+.app-card {
+  height: 100%;
+}
+.app-card-header {
+  background: #f0f1f2;
+  font-size: 12px;
+  padding: 8px;
+  height: 34px;  
+  color: #9a9697;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+}
+.app-card-body {
+  padding: 8px;
+  background: #f8f9fa;
+  font-size: 12px;
+}
+.pointer {
+  cursor: pointer;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.custom-btn {
+  margin-left: 5px;
+}

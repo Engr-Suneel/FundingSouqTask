@@ -1,0 +1,136 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstName": "John",
+      "lastName": "Cena",
+      "email": "john.cena@gmail.com",
+      "personalId": "12345678910",
+      "profileImage": "",
+      "mobileNo": "+920000000010",
+      "gender": "Male",
+      "address": {
+        "country": "Pakistan",
+        "city": "Karachi",
+        "street": "Mansoor Street",
+        "zipCode": 75000
+      },
+      "account": [
+        {
+          "accountName": "Gmail",
+          "accountNo": 12345678910
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "firstName": "Albert",
+      "lastName": "Delrio",
+      "email": "alert.delrio@gmail.com",
+      "personalId": "12345678911",
+      "profileImage": "",
+      "mobileNo": "+920000000011",
+      "gender": "Male",
+      "address": {
+        "country": "Pakistan",
+        "city": "Karachi",
+        "street": "Mansoor Street",
+        "zipCode": 75000
+      },
+      "account": [
+        {
+          "accountName": "Gmail",
+          "accountNo": 12345678911
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "firstName": "Lisa",
+      "lastName": "Jen",
+      "email": "lisa.jen@gmail.com",
+      "personalId": "12345678913",
+      "profileImage": "",
+      "mobileNo": "+920000000013",
+      "gender": "Female",
+      "address": {
+        "country": "Pakistan",
+        "city": "Karachi",
+        "street": "Mansoor Street",
+        "zipCode": 75000
+      },
+      "account": [
+        {
+          "accountName": "Gmail",
+          "accountNo": 12345678913
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "firstName": "Hareem",
+      "lastName": "Lutfi",
+      "email": "hareem.lutfi@gmail.com",
+      "personalId": "12345678915",
+      "profileImage": "",
+      "mobileNo": "+920000000015",
+      "gender": "Female",
+      "address": {
+        "country": "Pakistan",
+        "city": "Karachi",
+        "street": "Mansoor Street",
+        "zipCode": 75000
+      },
+      "account": [
+        {
+          "accountName": "Gmail",
+          "accountNo": 12345678915
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "firstName": "Walid",
+      "lastName": "Aslam",
+      "email": "walid.aslam@gmail.com",
+      "personalId": "12345678916",
+      "profileImage": "",
+      "mobileNo": "+920000000016",
+      "gender": "Male",
+      "address": {
+        "country": "Pakistan",
+        "city": "Karachi",
+        "street": "Mansoor Street",
+        "zipCode": 75000
+      },
+      "account": [
+        {
+          "accountName": "Gmail",
+          "accountNo": 12345678916
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "firstName": "Mazhar",
+      "lastName": "Abas",
+      "email": "mazhar.abas@gmail.com",
+      "personalId": "12345678917",
+      "profileImage": "",
+      "mobileNo": "+920000000017",
+      "gender": "Male",
+      "address": {
+        "country": "Pakistan",
+        "city": "Karachi",
+        "street": "Mansoor Street",
+        "zipCode": 75000
+      },
+      "account": [
+        {
+          "accountName": "Gmail",
+          "accountNo": 12345678917
+        }
+      ]
+    }
+  ]
+}

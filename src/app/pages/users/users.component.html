@@ -1,0 +1,63 @@
+<section class="users">
+  <div class="wrapper">
+    <div class="content">
+      <div class="text-right">
+        <button class="btn btn-primary" (click)="editUserDetail(null!)">
+          Create New User
+        </button>
+      </div>
+      <div class="card p-3 mt-3" *ngIf="users$ | async as userList">
+        <div class="row">
+          <div class="col-4">
+            <div class="filter">
+              <form [formGroup]="filterForm">
+                <input type="text" class="form-control" name="searchString" placeholder="Type to search..."
+                  formControlName="filter" />
+              </form>
+            </div>
+          </div>
+          <div class="col-8"></div>
+        </div>
+        <table class="table table-bordered table-hover pointer m-0 mt-3">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Gender</th>
+              <th class="text-right">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="userList.length>0">
+            <tr *ngFor="let user of userList | slice: (pageNo-1) * pageSize : (pageNo-1) * pageSize + pageSize">
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.gender}}</td>
+              <td class="text-right">
+                <button class="btn btn-info btn-sm custom-btn">
+                  <i class="bi bi-eye" (click)="viewUserDetail(user)"></i>
+                </button>
+                <button class="btn btn-warning btn-sm custom-btn">
+                  <i class="bi bi-pencil-square" (click)="editUserDetail(user)"></i>
+                </button>
+                <button class="btn btn-danger btn-sm custom-btn" type="button">
+                  <i class="bi bi-trash" (click)="deleteUserDetail(user)"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="userList.length<=0">
+            <tr>
+              <td colspan="5" class="text-center">No Data</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="mt-3" *ngIf="userList.length>0">
+          <az-paginations [totalRecords]="userList.length" [size]="pageSize" [currentPage]="pageNo"
+            (pageClicked)="onPageChange($event)" (recordChange)="onRecordChange($event)"></az-paginations>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
