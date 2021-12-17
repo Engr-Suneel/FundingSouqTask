@@ -7,13 +7,10 @@ export const getUserList = createSelector(getPagesState, (state) => {
   return state.userState.users;
 });
 
-export const getUserListWithRoute = createSelector(
+export const getUserById = createSelector(
   getUserList,
   getCurrentRoute,
   (users, route: RouterStateUrl) => {
-    return {
-      users,
-      route
-    }
+    return users ? users.find(o => o.id == route.params['id']) : null;
   }
 );

@@ -10,4 +10,6 @@ export const AppConst = {
 
   EVENT_USER_LOADED_SUCCESS: "eventUserLoadedSuccess",
   EVENT_USER_DELETE_SUCCESS: "eventUserDeleteSuccess",
+  EVENT_USER_ADDED_SUCCESS: "eventUserAddedSuccess",
+  EVENT_USER_EDITED_SUCCESS: "eventUserEditedSuccess",
 }

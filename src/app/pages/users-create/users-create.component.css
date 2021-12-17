@@ -1,0 +1,37 @@
+.custom-h4 {
+  font-size: 18px;
+  margin: 0px;
+  border-bottom: 2px solid #929292;
+  color: #929292;  
+}
+.required {
+  color: #ff0000;
+}
+:host ::ng-deep .custom-mobile > div {
+  display: block !important;
+}
+.custom-account-header {
+  border-bottom: 2px solid #929292;
+  color: #929292; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+.custom-account-header .custom-h4 {
+  border-bottom: none !important;
+}
+.accont-form {
+  background: #eeeeee;
+  padding: 15px 0px;
+  border-radius: 3px;
+  margin-bottom: 15px;  
+}
+.accont-form:last-child {
+  margin-bottom: 0px;
+}
+.custom-btn-acc {
+  margin-top: 21px;
+  height: 38px;
+  width: 100%;
+}

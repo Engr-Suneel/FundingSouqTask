@@ -1,6 +1,9 @@
 :root {
   --primary-color: #2980b9;
 }
+body {
+  font-size: 14px;
+}
 .app-loader {
   position: fixed;
   height: 100vh;
@@ -40,4 +43,12 @@
 }
 .custom-btn {
   margin-left: 5px;
+}
+.custom-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.custom-header h1 {
+  font-size: 28px;
 }

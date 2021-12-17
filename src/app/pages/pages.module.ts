@@ -12,7 +12,8 @@ import { SharedModule } from '../shared/shared.module';
 import { UsersCreateComponent } from './users-create/users-create.component';
 import { UsersViewComponent } from './users-view/users-view.component';
 import { UserService } from '../core/services/users.service';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Ng2TelInputModule } from 'ng2-tel-input';
 
 
 @NgModule({
@@ -26,7 +27,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PagesRoutingModule,
     SharedModule,
+    FormsModule,
     ReactiveFormsModule,
+    Ng2TelInputModule,
     StoreModule.forFeature(AppConst.PAGES_FEATURE_SELECTOR, pagesReducers),
     EffectsModule.forFeature(PagesEffects)
   ],

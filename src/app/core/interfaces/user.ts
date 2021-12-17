@@ -8,7 +8,7 @@ export interface IUser {
   mobileNo: string;
   gender: string;
   address: IAddress;
-  account: IAccount
+  account: IAccount[]
 }
 
 export interface IAddress {
@@ -20,5 +20,5 @@ export interface IAddress {
 
 export interface IAccount {
   accountName: string;
-  accountNo: number;
+  accountNo: string;
 }

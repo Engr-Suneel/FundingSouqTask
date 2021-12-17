@@ -1,1 +1,197 @@
-<p>users-create works!</p>
+<section class="create-user">
+  <div class="wrapper">
+    <div class="content">
+      <div class="custom-header">
+        <h1 class="m-0">{{title}}</h1>
+        <a [routerLink]="['../../users']" [queryParams]="queryParams">Go back</a>
+      </div>
+      <div class="mt-3 card p-3" *ngIf="userNotFoundMsg == ''">
+        <div class="alert alert-success" role="alert" *ngIf="successMsg">
+          {{successMsg}}
+        </div>
+        <form [formGroup]="userForm" (ngSubmit)="submit()" *ngIf="successMsg == ''">
+          <div class="personal-section">
+            <h4 class="custom-h4">Basic Information</h4>
+            <div class="row w-100 m-0 pt-3">
+              <div class="col-6">
+                <div class="form-group mb-3">
+                  <label>First Name <span class="required">*</span></label>
+                  <input class="form-control" type="text" formControlName="firstName"
+                    [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                  <div class="invalid-feedback d-block" *ngIf="submitted && f.firstName.errors">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    <div *ngIf="f.firstName.errors.maxCharacter">First Name character should not exceed 60</div>
+                    <div *ngIf="f.firstName.errors.whitespace">First Name should b a valid</div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label>Email <span class="required">*</span></label>
+                  <input class="form-control" type="text" formControlName="email"
+                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                  <div class="invalid-feedback d-block" *ngIf="submitted && f.email.errors">
+                    <div *ngIf="f.email.errors.required">Email is required</div>
+                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    <div *ngIf="f.email.errors.whitespace">Email must b a valid email address</div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label>Personal ID <span class="required">*</span></label>
+                  <input class="form-control" type="text" formControlName="personalId"
+                    [ngClass]="{ 'is-invalid': submitted && f.personalId.errors }" />
+                  <div class="invalid-feedback d-block" *ngIf="submitted && f.personalId.errors">
+                    <div *ngIf="f.personalId.errors.required">Personal ID is required</div>
+                    <div *ngIf="f.personalId.errors.maxPersonalId">Personal ID character should not exceed 11</div>
+                    <div *ngIf="f.personalId.errors.whitespace">Personal ID should b a valid</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group mb-3">
+                  <label>Last Name <span class="required">*</span></label>
+                  <input class="form-control" type="text" formControlName="lastName"
+                    [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                  <div class="invalid-feedback d-block" *ngIf="submitted && f.lastName.errors">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    <div *ngIf="f.lastName.errors.maxCharacter">Last Name character should not exceed 60</div>
+                    <div *ngIf="f.lastName.errors.whitespace">Last Name should b a valid</div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label>Mobile No <span class="required">*</span></label>
+                  <div class="custom-mobile">
+                    <input class="form-control" ng2TelInput [(ngModel)]="contactNo"
+                      [ngModelOptions]="{standalone: true}"
+                      [ng2TelInputOptions]="{initialCountry: selectedCountry.code}" (hasError)="hasError($event)"
+                      (ng2TelOutput)="getNumber($event)" (countryChange)="onCountryChange($event)" type="text"
+                      [ngClass]="{ 'is-invalid': submitted && f.mobileNo.errors }" />
+                  </div>
+                  <div class="invalid-feedback d-block" *ngIf="submitted && f.mobileNo.errors">
+                    <div *ngIf="f.mobileNo.errors.required">Mobile No is required and it should need to be valid</div>
+                    <div *ngIf="f.mobileNo.errors.whitespace">Mobile No should b a valid</div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label>Gender <span class="required">*</span></label>
+
+                  <select class="form-control" type="text" formControlName="gender"
+                    [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                    <option *ngFor="let g of genderList" [value]="g">{{g}}</option>
+                  </select>
+                  <div class="invalid-feedback d-block" *ngIf="submitted && f.gender.errors">
+                    <div *ngIf="f.gender.errors.required">Gender is required</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="address-section mt-3">
+            <h4 class="custom-h4">Address Information</h4>
+            <div class="row w-100 m-0 pt-3" formGroupName="address">
+              <div class="col-6">
+                <div class="form-group mb-3">
+                  <label>Country</label>
+                  <select class="form-control" type="text" formControlName="country"
+                    [ngClass]="{ 'is-invalid': submitted && fa.country.errors }">
+                    <option *ngFor="let c of countryList" [value]="c.name">{{c.name}}</option>
+                  </select>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label>City</label>
+                  <input class="form-control" type="text" formControlName="city"
+                    [ngClass]="{ 'is-invalid': submitted && fa.city.errors }" />
+                  <div class="invalid-feedback d-block" *ngIf="submitted && fa.city.errors">
+                    <div *ngIf="fa.city.errors.whitespace">City should b a valid</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group mb-3">
+                  <label>Street</label>
+                  <input class="form-control" type="text" formControlName="street"
+                    [ngClass]="{ 'is-invalid': submitted && fa.street.errors }" />
+                  <div class="invalid-feedback d-block" *ngIf="submitted && fa.street.errors">
+                    <div *ngIf="fa.street.errors.whitespace">Street should b a valid</div>
+                  </div>
+                </div>
+
+                <div class="form-group mb-3">
+                  <label>Zip Code</label>
+                  <input class="form-control" type="text" formControlName="zipCode"
+                    [ngClass]="{ 'is-invalid': submitted && fa.zipCode.errors }" />
+                  <div class="invalid-feedback d-block" *ngIf="submitted && fa.zipCode.errors">
+                    <div *ngIf="fa.zipCode.errors.whitespace">Zip Code should b a valid</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="account-information mt-3">
+            <div class="custom-account-header">
+              <h4 class="custom-h4">Account Information<span class="required">*</span></h4>
+              <button class="btn btn-success btn-sm" type="button" (click)="createAccountGroup('', '')">Add New
+                Account</button>
+            </div>
+            <div class="row w-100 m-0 pt-3" *ngIf="faArray.length">
+              <div class="col-12" formArrayName="account" *ngFor="let item of faArray.controls; let i = index">
+                <div class="accont-form" [formGroupName]="i">
+                  <div class="row w-100 m-0">
+                    <div class="col-5">
+                      <div class="form-group">
+                        <label>Account Name <span class="required">*</span></label>
+                        <input class="form-control" type="text" formControlName="accountName"
+                          [ngClass]="{ 'is-invalid': accountSubmitted && faArray.controls[i].get('accountName')!.errors! }" />
+                        <div class="invalid-feedback d-block"
+                          *ngIf="accountSubmitted && faArray.controls[i].get('accountName')!.errors!">
+                          <div *ngIf="faArray.controls[i].get('accountName')!.errors!.required!">Account Name is
+                            Required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-5">
+                      <div class="form-group">
+                        <label>Account No <span class="required">*</span></label>
+                        <input class="form-control" type="text" formControlName="accountNo"
+                          [ngClass]="{ 'is-invalid': accountSubmitted && faArray.controls[i].get('accountNo')!.errors! }" />
+                        <div class="invalid-feedback d-block"
+                          *ngIf="accountSubmitted && faArray.controls[i].get('accountNo')!.errors!">
+                          <div *ngIf="faArray.controls[i].get('accountNo')!.errors!.required!">Account No is Required
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-danger btn-sm custom-btn-acc" type="button" (click)="deleteAccount(i)">
+                        <i class="bi bi-trash"></i> Delete
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="invalid-feedback d-block" *ngIf="submitted && !faArray.length">
+            Please atleast one account
+          </div>
+          <hr />
+          <div class="mt-3 text-right">
+            <button class="btn btn-primary" type="submit">{{isEdit ? 'Save User' : 'Create New User'}}</button>
+          </div>
+        </form>
+      </div>
+      <div class="mt-3 card p-3" *ngIf="userNotFoundMsg">
+        <div class="alert alert-danger" role="alert">
+          {{userNotFoundMsg}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

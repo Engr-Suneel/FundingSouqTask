@@ -7,6 +7,7 @@ import { map, startWith, withLatestFrom } from 'rxjs/operators';
 import { IUser } from 'src/app/core/interfaces/user';
 import { EventService } from 'src/app/core/services/event.service';
 import { AppConst } from 'src/app/helpers/app-constants';
+import { AppRoute } from 'src/app/helpers/app-route.constants';
 import { Utils } from 'src/app/helpers/utils';
 import { setLoader } from 'src/app/layouts/store/actions/loader.actions';
 import { AppState } from 'src/app/store';
@@ -119,11 +120,14 @@ export class UsersComponent implements OnInit, OnDestroy {
   }
 
   viewUserDetail(user: IUser) {
-    console.log(user);
+    if (user && user.id) {
+      this.router.navigate(['users-view', user.id]);
+    }
   }
 
   editUserDetail(user: IUser) {
-    console.log(user);
+    let id = user ? user.id : 0;
+    this.router.navigate(['users-create', id]);
   }
 
   deleteUserDetail(user: IUser) {

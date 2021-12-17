@@ -8,7 +8,7 @@ import { UserService } from "src/app/core/services/users.service";
 import { AppConst } from "src/app/helpers/app-constants";
 import { setLoader } from "src/app/layouts/store/actions/loader.actions";
 import { AppState } from "src/app/store";
-import { deleteUserById, loadUserList, loadUserListSuccess } from "../actions/users.actions";
+import { addNewUser, deleteUserById, editUserById, loadUserList, loadUserListSuccess } from "../actions/users.actions";
 
 @Injectable()
 export class UserEffects {
@@ -38,6 +38,42 @@ export class UserEffects {
         )
       )
     )
+  );
+
+  addNewUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(addNewUser),
+      exhaustMap((action) =>
+        this.userService.users.create(action.payload).pipe(
+          map((data: any) => {
+            this.store.dispatch(setLoader({ isLoading: false }));
+            this.eventService.broadcast(AppConst.EVENT_USER_ADDED_SUCCESS, data);
+          }),
+          catchError((error: any) => {
+            this.store.dispatch(setLoader({ isLoading: false }));
+            return of(error)
+          })
+        )
+      )
+    ), { dispatch: false }
+  );
+
+  editUserById$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(editUserById),
+      exhaustMap((action) =>
+        this.userService.users.update(action.payload, action.id).pipe(
+          map((data: any) => {
+            this.store.dispatch(setLoader({ isLoading: false }));
+            this.eventService.broadcast(AppConst.EVENT_USER_EDITED_SUCCESS, data);
+          }),
+          catchError((error: any) => {
+            this.store.dispatch(setLoader({ isLoading: false }));
+            return of(error)
+          })
+        )
+      )
+    ), { dispatch: false }
   );
 
   deleteUserById$ = createEffect(() =>
